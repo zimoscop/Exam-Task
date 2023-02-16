@@ -1,5 +1,5 @@
 const URL = "https://jsonplaceholder.typicode.com/posts/?_start=0&_limit=7";
-const input = document.querySelector("input");
+const input = document.querySelector(".find");
 const textbox = document.querySelector(".textbox");
 
 const response = await fetch(URL);
@@ -24,3 +24,16 @@ function createTextBox(obj) {
 data.forEach((el) => {
   document.querySelector(".box").append(createTextBox(el));
 });
+
+function articleFinder(event) {
+  document.querySelector(".box").innerHTML = "";
+  data
+    .filter((obj) =>
+      obj.title.toLowerCase().trim().includes(event.target.value)
+    )
+    .forEach((obj) =>
+      document.querySelector(".box").append(createTextBox(obj))
+    );
+}
+
+input.addEventListener("input", articleFinder);
