@@ -24,6 +24,12 @@ section {
   display: block;
 }
 
+.reset_all:hover {
+  background-color: rgb(97, 36, 36);
+  color: aliceblue;
+  border-radius: 4px;
+}
+
 .find_and_count {
   width: 300px;
   margin-bottom: 15px;
@@ -70,7 +76,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 10px 10px;
-  margin-top: 15px;
+  margin: 15px 0 15px;
 }
 
 .textbox {
