@@ -4,14 +4,12 @@ const textbox = document.querySelector(".textbox");
 const cnt = document.querySelector(".cnt");
 const div = document.querySelector(".find_and_count");
 const cntText = document.querySelector(".cnt_text");
-const btn = document.querySelector("button");
+const btn = document.querySelector(".btn_find");
 const reset = document.querySelector(".reset");
-
+const btnResetAll = document.querySelector(".reset_all");
 const response = await fetch(URL);
-// console.log(response);
 const data = await response.json();
-// console.log(data);
-
+// выыодит статьи
 function createTextBox(obj) {
   const textbox = document.createElement("div");
   const input = document.createElement("input");
@@ -27,15 +25,25 @@ function createTextBox(obj) {
     cnt.textContent = "0";
     textbox.classList.remove("checked");
   });
-
   textbox.append(input);
   return textbox;
 }
-
-data.forEach((el) => {
-  document.querySelector(".box").append(createTextBox(el));
-});
-
+// проверяет сохраненного поиска
+if (localStorage.length > 0) {
+  data
+    .filter((obj) =>
+      obj.title.toLowerCase().trim().includes(localStorage.getItem("case"))
+    )
+    .forEach((obj) =>
+      document.querySelector(".box").append(createTextBox(obj))
+    );
+  input.value = localStorage.getItem("case");
+}
+if (localStorage.length < 1)
+  data.forEach((el) => {
+    document.querySelector(".box").append(createTextBox(el));
+  });
+// посик по заголовку
 function articleFinder() {
   document.querySelector(".box").innerHTML = "";
   data
@@ -44,19 +52,17 @@ function articleFinder() {
       document.querySelector(".box").append(createTextBox(obj))
     );
 }
-
 btn.addEventListener("click", articleFinder);
 btn.addEventListener("click", saveLastCall);
-
+// подчет выбранных статей
 function countCheked() {
   const check = document.querySelectorAll(".textbox.checked");
   let fincheck = [...check];
   let cntOfcheck = fincheck.length;
   cnt.textContent = cntOfcheck;
 }
-
 document.querySelector("body").addEventListener("click", countCheked);
-
+// сохнаняет последнее значение посика
 function saveLastCall() {
   if (input.value) {
     if (localStorage.length >= 1) {
@@ -69,4 +75,8 @@ function saveLastCall() {
     }
   }
 }
-console.log(localStorage.getItem("case"));
+// сброс всего
+btnResetAll.addEventListener("click", () => {
+  localStorage.clear();
+  window.location.reload();
+});
