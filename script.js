@@ -7,8 +7,10 @@ const cntText = document.querySelector(".cnt_text");
 const btn = document.querySelector(".btn_find");
 const reset = document.querySelector(".reset");
 const btnResetAll = document.querySelector(".reset_all");
+const box = document.querySelector(".box");
 const response = await fetch(URL);
 const data = await response.json();
+
 // выводит статьи
 function createTextBox(obj) {
   const textbox = document.createElement("div");
@@ -34,23 +36,18 @@ if (localStorage.length > 0) {
     .filter((obj) =>
       obj.title.toLowerCase().trim().includes(localStorage.getItem("case"))
     )
-    .forEach((obj) =>
-      document.querySelector(".box").append(createTextBox(obj))
-    );
+    .forEach((obj) => box.append(createTextBox(obj)));
   input.value = localStorage.getItem("case");
 }
-if (localStorage.length < 1)
-  data.forEach((el) => {
-    document.querySelector(".box").append(createTextBox(el));
-  });
+if (localStorage.length < 1) {
+  data.forEach((el) => box.append(createTextBox(el)));
+}
 // поиск по заголовку
 function articleFinder() {
   document.querySelector(".box").innerHTML = "";
   data
     .filter((obj) => obj.title.toLowerCase().trim().includes(input.value))
-    .forEach((obj) =>
-      document.querySelector(".box").append(createTextBox(obj))
-    );
+    .forEach((obj) => box.append(createTextBox(obj)));
 }
 btn.addEventListener("click", articleFinder);
 btn.addEventListener("click", saveLastCall);
