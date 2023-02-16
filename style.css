@@ -52,6 +52,21 @@ section {
   outline-offset: 0;
 }
 
+.find:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #bdbdbd;
+  box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
+}
+
+/* .find:invalid {
+  border: 2px solid red;
+}
+
+.find:valid {
+  color: green;
+} */
+
 .count {
   display: flex;
   justify-content: space-between;
@@ -59,6 +74,11 @@ section {
 
 .cnt {
   width: 15px;
+  padding-top: 4px;
+}
+
+.cnt_text {
+  padding-top: 3px;
 }
 
 button {
@@ -84,6 +104,10 @@ button {
   padding: 5px;
   border: 1px solid black;
   border-radius: 4px;
+}
+
+.textbox:hover {
+  box-shadow: 0 0 9px rgb(100, 96, 96);
 }
 
 h2 {

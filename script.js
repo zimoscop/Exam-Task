@@ -8,6 +8,7 @@ const btn = document.querySelector(".btn_find");
 const reset = document.querySelector(".reset");
 const btnResetAll = document.querySelector(".reset_all");
 const box = document.querySelector(".box");
+
 const response = await fetch(URL);
 const data = await response.json();
 
@@ -30,23 +31,21 @@ function createTextBox(obj) {
   textbox.append(input);
   return textbox;
 }
-// проверяет значение сохраненного поиска
-if (localStorage.length > 0) {
-  data
-    .filter((obj) =>
-      obj.title.includes(
-        localStorage.getItem("case").toLocaleLowerCase().trim()
+// выводит сохраненные значения
+input.value = localStorage.getItem("case");
+localStorage.length
+  ? data
+      .filter((obj) =>
+        obj.title.includes(
+          localStorage.getItem("case").toLocaleLowerCase().trim()
+        )
       )
-    )
-    .forEach((obj) => box.append(createTextBox(obj)));
-  input.value = localStorage.getItem("case");
-}
-if (localStorage.length < 1) {
-  data.forEach((el) => box.append(createTextBox(el)));
-}
+      .forEach((obj) => box.append(createTextBox(obj)))
+  : data.forEach((el) => box.append(createTextBox(el)));
+
 // поиск по заголовку
 function articleFinder() {
-  document.querySelector(".box").innerHTML = "";
+  box.innerHTML = "";
   data
     .filter((obj) =>
       obj.title.toLowerCase().trim().includes(input.value.toLowerCase().trim())

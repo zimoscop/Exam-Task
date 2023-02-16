@@ -18,11 +18,17 @@
       <section>
         <div class="container">
           <div class="find_and_count">
-            <input
-              placeholder="Enter the title of the article"
-              class="find"
-              type="text"
-            />
+            <form>
+              <label>
+                <input
+                  placeholder="Enter the title of the article"
+                  class="find"
+                  type="text"
+                  pattern="[a-zA-Z]"
+                  title="Please, use only English"
+                />
+              </label>
+            </form>
             <div class="count">
               <span class="cnt_text">Articles selected:</span>
               <span class="cnt">0</span>
