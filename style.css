@@ -46,6 +46,7 @@ section {
   width: 300px;
   padding: 5px;
   border: 1px solid black;
+  border-radius: 4px;
 }
 
 h2 {
