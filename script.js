@@ -9,7 +9,7 @@ const reset = document.querySelector(".reset");
 const btnResetAll = document.querySelector(".reset_all");
 const response = await fetch(URL);
 const data = await response.json();
-// выыодит статьи
+// выводит статьи
 function createTextBox(obj) {
   const textbox = document.createElement("div");
   const input = document.createElement("input");
@@ -28,7 +28,7 @@ function createTextBox(obj) {
   textbox.append(input);
   return textbox;
 }
-// проверяет сохраненного поиска
+// проверяет значение сохраненного поиска
 if (localStorage.length > 0) {
   data
     .filter((obj) =>
@@ -43,7 +43,7 @@ if (localStorage.length < 1)
   data.forEach((el) => {
     document.querySelector(".box").append(createTextBox(el));
   });
-// посик по заголовку
+// поиск по заголовку
 function articleFinder() {
   document.querySelector(".box").innerHTML = "";
   data
@@ -54,7 +54,7 @@ function articleFinder() {
 }
 btn.addEventListener("click", articleFinder);
 btn.addEventListener("click", saveLastCall);
-// подчет выбранных статей
+// подсчет выбранных статей
 function countCheked() {
   const check = document.querySelectorAll(".textbox.checked");
   let fincheck = [...check];
@@ -62,7 +62,7 @@ function countCheked() {
   cnt.textContent = cntOfcheck;
 }
 document.querySelector("body").addEventListener("click", countCheked);
-// сохнаняет последнее значение посика
+// сохнаняет последнее значение поиска
 function saveLastCall() {
   if (input.value) {
     if (localStorage.length >= 1) {
