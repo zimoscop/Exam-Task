@@ -46,6 +46,7 @@ function articleFinder() {
 }
 
 btn.addEventListener("click", articleFinder);
+btn.addEventListener("click", saveLastCall);
 
 function countCheked() {
   const check = document.querySelectorAll(".textbox.checked");
@@ -55,3 +56,17 @@ function countCheked() {
 }
 
 document.querySelector("body").addEventListener("click", countCheked);
+
+function saveLastCall() {
+  if (input.value) {
+    if (localStorage.length >= 1) {
+      localStorage.clear();
+      localStorage.setItem("case", input.value);
+      input.value = "";
+    }
+    if (localStorage.length === 0) {
+      localStorage.setItem("case", input.value);
+    }
+  }
+}
+console.log(localStorage.getItem("case"));
