@@ -34,7 +34,9 @@ function createTextBox(obj) {
 if (localStorage.length > 0) {
   data
     .filter((obj) =>
-      obj.title.toLowerCase().trim().includes(localStorage.getItem("case"))
+      obj.title.includes(
+        localStorage.getItem("case").toLocaleLowerCase().trim()
+      )
     )
     .forEach((obj) => box.append(createTextBox(obj)));
   input.value = localStorage.getItem("case");
@@ -46,7 +48,9 @@ if (localStorage.length < 1) {
 function articleFinder() {
   document.querySelector(".box").innerHTML = "";
   data
-    .filter((obj) => obj.title.toLowerCase().trim().includes(input.value))
+    .filter((obj) =>
+      obj.title.toLowerCase().trim().includes(input.value.toLowerCase().trim())
+    )
     .forEach((obj) => box.append(createTextBox(obj)));
 }
 btn.addEventListener("click", articleFinder);
