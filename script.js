@@ -4,6 +4,8 @@ const textbox = document.querySelector(".textbox");
 const cnt = document.querySelector(".cnt");
 const div = document.querySelector(".find_and_count");
 const cntText = document.querySelector(".cnt_text");
+const btn = document.querySelector("button");
+const reset = document.querySelector(".reset");
 
 const response = await fetch(URL);
 // console.log(response);
@@ -21,6 +23,10 @@ function createTextBox(obj) {
   input.addEventListener("click", () => {
     textbox.classList.toggle("checked");
   });
+  reset.addEventListener("click", () => {
+    cnt.textContent = "0";
+    textbox.classList.remove("checked");
+  });
 
   textbox.append(input);
   return textbox;
@@ -30,18 +36,16 @@ data.forEach((el) => {
   document.querySelector(".box").append(createTextBox(el));
 });
 
-function articleFinder(event) {
+function articleFinder() {
   document.querySelector(".box").innerHTML = "";
   data
-    .filter((obj) =>
-      obj.title.toLowerCase().trim().includes(event.target.value)
-    )
+    .filter((obj) => obj.title.toLowerCase().trim().includes(input.value))
     .forEach((obj) =>
       document.querySelector(".box").append(createTextBox(obj))
     );
 }
 
-input.addEventListener("input", articleFinder);
+btn.addEventListener("click", articleFinder);
 
 function countCheked() {
   const check = document.querySelectorAll(".textbox.checked");

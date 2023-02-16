@@ -36,6 +36,39 @@ section {
   outline-offset: 0;
 }
 
+.count {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cnt {
+  width: 15px;
+}
+
+.reset {
+  width: 45px;
+  height: 25px;
+  border: 0.5px solid rgb(65, 61, 61);
+  background-color: rgb(174, 160, 160);
+  border-radius: 2px;
+  font-size: 14px;
+  text-align: center;
+  padding-top: 2px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.reset:hover {
+  background-color: rgb(210, 188, 188);
+}
+
+button {
+  width: 45px;
+  height: 25px;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
 .box {
   display: flex;
   flex-wrap: wrap;
