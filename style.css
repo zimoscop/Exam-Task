@@ -22,12 +22,17 @@ section {
   width: 100px;
   margin: 0 auto;
   display: block;
+  transition: 0.6s;
 }
 
-.reset_all:hover {
+.reset_all:hover,
+.reset:hover,
+.btn_find:hover {
   background-color: rgb(97, 36, 36);
   color: aliceblue;
   border-radius: 4px;
+  border: inherit;
+  transition: 0.6s;
 }
 
 .find_and_count {
@@ -59,14 +64,6 @@ section {
   box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
 }
 
-/* .find:invalid {
-  border: 2px solid red;
-}
-
-.find:valid {
-  color: green;
-} */
-
 .count {
   display: flex;
   justify-content: space-between;
@@ -90,6 +87,10 @@ button {
 .btn_find {
   width: 85px;
   margin-left: 15px;
+}
+
+.btn_find:hover {
+  background-color: rgb(2, 49, 49);
 }
 
 .box {

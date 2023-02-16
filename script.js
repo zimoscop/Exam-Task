@@ -65,12 +65,11 @@ document.querySelector("body").addEventListener("click", countCheked);
 // сохнаняет последнее значение поиска
 function saveLastCall() {
   if (input.value) {
-    if (localStorage.length >= 1) {
+    if (localStorage.length) {
       localStorage.clear();
       localStorage.setItem("case", input.value);
       input.value = "";
-    }
-    if (localStorage.length === 0) {
+    } else {
       localStorage.setItem("case", input.value);
     }
   }
