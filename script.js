@@ -57,7 +57,7 @@ function articleFinder() {
     )
     .forEach((obj) => box.append(createTextBox(obj)));
 }
-btn.addEventListener("click", articleFinder);
+btn.addEventListener("click", articleFinder, { once: true });
 btn.addEventListener("click", saveLastCall);
 // подсчет выбранных статей
 function countCheked() {
