@@ -12,6 +12,11 @@ const box = document.querySelector(".box");
 const response = await fetch(URL);
 const data = await response.json();
 
+function eventPrevDef(e) {
+  e.preventDefault();
+}
+btn.addEventListener("submit", eventPrevDef);
+
 // выводит статьи
 function createTextBox(obj) {
   const textbox = document.createElement("div");

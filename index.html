@@ -19,8 +19,9 @@
         <div class="container">
           <div class="find_and_count">
             <form>
-              <label>
+              <label for="find">
                 <input
+                  name="find"
                   placeholder="Enter the title of the article"
                   class="find"
                   type="text"
@@ -28,12 +29,12 @@
                   title="Please, use only English"
                 />
               </label>
+              <button class="btn_find">Find</button>
             </form>
             <div class="count">
               <span class="cnt_text">Articles selected:</span>
               <span class="cnt">0</span>
               <button class="reset">Reset</button>
-              <button class="btn_find">Find</button>
             </div>
           </div>
           <div class="box"></div>
