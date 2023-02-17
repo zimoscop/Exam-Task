@@ -64,6 +64,11 @@ section {
   box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
 }
 
+.find:invalid {
+  border: 3px solid red;
+  border-radius: 4px;
+}
+
 .count {
   display: flex;
   justify-content: space-between;
