@@ -32,6 +32,7 @@ function createTextBox(obj) {
   reset.addEventListener("click", () => {
     cnt.textContent = "0";
     textbox.classList.remove("checked");
+    input.checked = false;
   });
   textbox.append(input);
   return textbox;
