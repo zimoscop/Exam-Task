@@ -17,6 +17,18 @@ function eventPrevDef(e) {
 }
 btn.addEventListener("submit", eventPrevDef);
 
+// function replaceLocation() {
+//   console.log("work");
+//   if (localStorage) {
+//     history.replaceState(
+//       null,
+//       null,
+//       `http://127.0.0.1:5500/?find=${localStorage.getItem("case")}`
+//     );
+//   }
+// }
+// btn.addEventListener("click", replaceLocation);
+
 // выводит статьи
 function createTextBox(obj) {
   const textbox = document.createElement("div");
@@ -48,6 +60,15 @@ localStorage.length
       )
       .forEach((obj) => box.append(createTextBox(obj)))
   : data.forEach((el) => box.append(createTextBox(el)));
+
+// выводит последнюю адресную строку
+localStorage.length
+  ? history.replaceState(
+      null,
+      null,
+      `http://127.0.0.1:5500/?find=${localStorage.getItem("case")}`
+    )
+  : history.replaceState(null, null, `http://127.0.0.1:5500/?find=`);
 
 // поиск по заголовку
 function articleFinder() {
