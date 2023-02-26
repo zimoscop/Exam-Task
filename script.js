@@ -51,12 +51,8 @@ localStorage.length
 
 // выводит последнюю адресную строку
 localStorage.length
-  ? history.replaceState(
-      null,
-      null,
-      `http://127.0.0.1:5500/?find=${localStorage.getItem("case")}`
-    )
-  : history.replaceState(null, null, `http://127.0.0.1:5500/?find=`);
+  ? history.replaceState(null, null, `?find=${localStorage.getItem("case")}`)
+  : history.replaceState(null, null, ``);
 
 // поиск по заголовку
 function articleFinder() {
